@@ -59,9 +59,11 @@ private static class ConsumerThread extends Thread{
             while (true) {
                 ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
 
-        System.out.println(records.toString() +"geldi");
-                for (ConsumerRecord<String, String> record : records)
+                for (ConsumerRecord<String, String> record : records){
+                	System.out.println("Mensaje:");
+
                     System.out.println(record.value());
+                }
             }
         }catch(WakeupException ex){
             System.out.println("Exception caught " + ex.getMessage());
